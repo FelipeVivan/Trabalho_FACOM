@@ -7,7 +7,6 @@ int main() {
     const int c[6]={22,18,15,13,10,8}, tanque=50;
     float liters, range;
     while(1){
-        liters=0;
         printf("Digite o combustivel disponivel:");
         if ((scanf("%f", &liters) == 1) && (liters>0 && liters<=tanque)){
             break;
