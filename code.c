@@ -9,7 +9,12 @@ int main() {
     while(1){
         printf("Digite o combustivel disponivel:");
         if ((scanf("%f", &liters) == 1) && (liters>0 && liters<=tanque)){
+            int ch=getchar();
+            if(ch =="\n"){
             break;
+            }else{
+                printf("\nValor invalido! Digite um valor valido.\n");
+            }
         }else{
             int ch;
             while ((ch = getchar()) != '\n' && ch != EOF);
