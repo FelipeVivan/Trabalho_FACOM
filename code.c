@@ -11,7 +11,8 @@ int main() {
         if ((scanf("%f", &liters) == 1) && (liters>0 && liters<=tanque)){
             break;
         }else{
-            setbuf(stdin,NULL);
+            int ch;
+            while ((ch = getchar()) != '\n' && ch != EOF);
             printf("\nValor invalido! Digite um valor valido.\n");
         }    
     }   
