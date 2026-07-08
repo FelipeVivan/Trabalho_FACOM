@@ -12,7 +12,7 @@ int main() {
         printf("Digite o combustivel disponivel:");
         a = '\0';
         if ((scanf("%f%c", &liters, &a) != 2) || (a!='\n') || ((liters<0) || (liters>tanque))){
-            if (a! = '\n'){
+            if (a != '\n'){
             int ch;
             while ((ch = getchar()) != '\n' && ch != EOF);
             }
