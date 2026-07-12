@@ -32,9 +32,10 @@ int main() {
             while ((ch = getchar()) != '\n' && ch != EOF);
             }
             printf("Entrada invalida\n");
-        }else{
             continue;
         }
+  
+        
 
         for (i=0; i<6; i++){
             if (potencias[i]==pot){
@@ -47,7 +48,7 @@ int main() {
          }
     }
     range = c[i] * liters;
-    printf("A sua autonomia e de: %f Km", range);
+    printf("A sua autonomia e de: %2f Km", range);
     if (range < alerta)
     printf("\nAlerta de autonomia baixa ");     
 
