@@ -6,6 +6,7 @@
 void erro(){
     printf("\nEntrada invalida\n");
 }
+void Tabela()
 
 
 
@@ -30,7 +31,7 @@ int main() {
     while (z == 1){
         printf("\nDigite a potencia que sera utilizada:");
         a = '\0';
-        if (((scanf("%f%c", &liters, &a) != 2)) || (a!='\n')){
+        if (((scanf("%f%c", &pot, &a) != 2)) || (a!='\n')){
             if (a != '\n'){
             int ch;
             while ((ch = getchar()) != '\n' && ch != EOF);
