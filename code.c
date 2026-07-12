@@ -4,7 +4,7 @@
 #include <math.h>
 
 void erro(){
-    printf("\nEntrada invalida");
+    printf("\nEntrada invalida\n");
 }
 
 
@@ -30,7 +30,7 @@ int main() {
     while (z == 1){
         printf("\nDigite a potencia que sera utilizada:");
         a = '\0';
-        if (scanf("%d", &pot) != 1) {
+        if (((scanf("%f%c", &liters, &a) != 2)) || (a!='\n')){
             if (a != '\n'){
             int ch;
             while ((ch = getchar()) != '\n' && ch != EOF);
