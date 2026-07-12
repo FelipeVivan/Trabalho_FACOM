@@ -93,7 +93,7 @@ int main() {
     range = calcularAutonomia(liters, consumo[i]);
     printf ("\nSera usado %d por cento de potencia", potencia);
     printf ("\nVoce possui %.1fL", liters);
-    printf ("\no seu consumo sera: %dKm/L\n", consumo[i]);
+    printf ("\nO seu consumo sera: %dKm/L\n", consumo[i]);
     printf ("\nA sua autonomia e de: %.2f Km", range);
     if (range < alerta)
     printf("\nAlerta de autonomia baixa\n\n");
