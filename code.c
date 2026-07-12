@@ -3,6 +3,10 @@
 #include <string.h>
 #include <math.h>
 
+void erro(){
+    printf("\nEntrada invalida");
+}
+
 
 
 int main() {
@@ -18,7 +22,7 @@ int main() {
             int ch;
             while ((ch = getchar()) != '\n' && ch != EOF);
             }
-            printf("\nValor invalido! Digite um valor valido.\n");                        
+            erro();                        
         }else{
             break;
         }
@@ -31,7 +35,7 @@ int main() {
             int ch;
             while ((ch = getchar()) != '\n' && ch != EOF);
             }
-            printf("Entrada invalida\n");
+            erro();
             continue;
         }
   
