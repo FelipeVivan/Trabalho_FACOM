@@ -6,7 +6,7 @@
 
 
 int main() {
-    const int c[6]={22,18,15,13,10,8}, tanque=50;
+    const int c[6]={22,18,15,13,10,8}, tanque=50; int potencias[6]={20,40,50,60,80,100};
     float liters, range;
     int pot, i, z=1;
     char a;
@@ -34,12 +34,13 @@ int main() {
     }
 
     for (i=0; i<6; i++){
-        if (c[i]==pot){
+        if (potencias[i]==pot){
             z=0;
             break;
         }               
     }
-    printf("Valor invalido. Digite um valor entre estes: 20, 40, 50, 60, 80, 100\n");
+    if (z==1){
+        printf("Valor invalido. Digite um valor entre estes: 20, 40, 50, 60, 80, 100\n");
     }
 
     return 0;
