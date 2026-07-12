@@ -37,10 +37,7 @@ int main() {
             }
             erro();
             continue;
-        }
-  
-        
-
+        }       
         for (i=0; i<6; i++){
             if (potencias[i]==pot){
                z=0;
@@ -48,7 +45,7 @@ int main() {
             }               
         }
          if (z==1){
-              printf("Valor invalido. Digite um valor entre estes: 20, 40, 50, 60, 80, 100\n");
+              printf("\nValor invalido. Digite um valor entre estes: 20, 40, 50, 60, 80, 100\n");
          }
     }
     range = c[i] * liters;
