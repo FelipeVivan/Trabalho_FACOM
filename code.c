@@ -32,6 +32,7 @@ int main() {
             while ((ch = getchar()) != '\n' && ch != EOF);
             }
             printf("Entrada invalida\n");
+        }else{
             continue;
         }
 
