@@ -52,8 +52,8 @@ int main() {
          }
     }
     range = c[i] * liters;
-    printf("Voce possui %2fL, liters");
-    printf("A sua autonomia e de: %2f Km", range);
+    printf("Voce possui %.2fL", liters);
+    printf("\nA sua autonomia e de: %.2f Km", range);
     if (range < alerta)
     printf("\nAlerta de autonomia baixa ");
          
