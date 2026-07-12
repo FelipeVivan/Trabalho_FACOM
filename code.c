@@ -6,7 +6,6 @@
 void erro(){
     printf("\nEntrada invalida\n");
 }
-#define NUM_NIVEIS 6
 float calcularAutonomia(float liters, float consumo) {
                                    // declara uma funcao chamada calcularAutonomia
                                    // ela recebe dois parametros (combustivel e consumo, ambos float)
@@ -14,9 +13,10 @@ float calcularAutonomia(float liters, float consumo) {
     return liters * consumo;
                                    // aplica a formula Autonomia = Combustivel x Consumo
                                    // e devolve o resultado para quem chamou a funcao
-} 
+}
 
-const int c[NUM_NIVEIS]={22,18,15,13,10,8};
+#define NUM_NIVEIS 6
+const int consumo[NUM_NIVEIS]={22,18,15,13,10,8};
 const int potencias[NUM_NIVEIS]={20,40,50,60,80,100};
 
 void exibirTabelaSimulacao(float liters) {
@@ -38,11 +38,11 @@ void exibirTabelaSimulacao(float liters) {
                                    // inicia um laco de repeticao (for)
                                    // i comeca em 0, repete enquanto i for menor que 6,
                                    // e soma 1 a "i" (i++) a cada volta -> percorre todo o vetor
-        float autonomia = calcularAutonomia(liters, c[i]);
+        float autonomia = calcularAutonomia(liters, consumo[i]);
                                    // declara uma variavel local "autonomia"
                                    // chama a funcao calcularAutonomia, passando o combustivel (fixo)
                                    // e o consumo daquele nivel especifico (CONSUMOS[i])
-        printf("%-14.0d %-16.1d %-15.1f\n", potencias[i], c[i], autonomia);
+        printf("%-14.0d %-16.1d %-15.1f\n", potencias[i], consumo[i], autonomia);
                                    // imprime uma linha da tabela com 3 valores:
                                    // POTENCIAS[i]  -> %-14.0f: numero sem casas decimais, 14 espacos, alinhado a esquerda
                                    // CONSUMOS[i]   -> %-16.1f: numero com 1 casa decimal, 16 espacos
@@ -54,7 +54,7 @@ void exibirTabelaSimulacao(float liters) {
 int main() {
     const int tanque=50; int alerta=25;
     float liters, range;
-    int pot, i, z=1;
+    int potencia, i, controle=0;
     char a;
     while(1){
         printf("Digite o combustivel disponivel:");
@@ -69,10 +69,10 @@ int main() {
             break;
         }
     }
-    while (z == 1){
+    while (controle == 0){
         printf("\nDigite a potencia que sera utilizada:");
         a = '\0';
-        if (((scanf("%d%c", &pot, &a) != 2)) || (a!='\n')){
+        if (((scanf("%d%c", &potencia, &a) != 2)) || (a!='\n')){
             if (a != '\n'){
             int ch;
             while ((ch = getchar()) != '\n' && ch != EOF);
@@ -81,20 +81,22 @@ int main() {
             continue;
         }       
         for (i=0; i<6; i++){
-            if (potencias[i]==pot){
-               z=0;
+            if (potencias[i]==potencia){
+               controle=1;
                break;
             }               
         }
-         if (z==1){
+         if (controle==0){
               printf("\nValor invalido. Digite um valor entre estes: 20, 40, 50, 60, 80, 100\n");
          }
     }
-    range = calcularAutonomia(liters, c[i]);
-    printf ("\nVoce possui %.2fL", liters);
-    printf ("\nA sua autonomia e de: %.2f Km\n", range);
+    range = calcularAutonomia(liters, consumo[i]);
+    printf ("\nSera usado %d por cento de potencia", potencia);
+    printf ("\nVoce possui %.1fL", liters);
+    printf ("\no seu consumo sera: %dKm/L\n", consumo[i]);
+    printf ("\nA sua autonomia e de: %.2f Km", range);
     if (range < alerta)
-    printf("\nAlerta de autonomia baixa\n");
+    printf("\nAlerta de autonomia baixa\n\n");
     exibirTabelaSimulacao(liters);
                                    // Chama a funcao exibirTabelaSimulacao, passando o valor de combustivel
                                    // (e dentro dessa funcao que a tabela inteira e montada e impressa)
