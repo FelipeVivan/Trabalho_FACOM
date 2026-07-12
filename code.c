@@ -53,7 +53,7 @@ void exibirTabelaSimulacao(float liters) {
 
 int main() {
     const int tanque=50; int alerta=25;
-    float range, liters;
+    float liters, range;
     int pot, i, z=1;
     char a;
     while(1){
@@ -91,8 +91,8 @@ int main() {
          }
     }
     range = calcularAutonomia(liters, c[i]);
-    printf("\nVoce possui %.2fL", liters);
-    printf("\nA sua autonomia e de: %.2f Km\n", range);
+    printf ("\nVoce possui %.2fL", liters);
+    printf ("\nA sua autonomia e de: %.2f Km\n", range);
     if (range < alerta)
     printf("\nAlerta de autonomia baixa\n");
     exibirTabelaSimulacao(liters);
