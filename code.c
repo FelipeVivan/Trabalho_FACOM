@@ -26,7 +26,7 @@ void exibirTabelaSimulacao(float liters) {
     int i;
                                    
                                    // as posicoes do vetor dentro do laco de repeticao (for)
-    printf("\nTabela de Simulacao (combustivel = %.2f L)\n", liters);
+    printf("\n\nTabela de Simulacao (combustivel = %.2f L)\n", liters);
                                    // imprime o titulo da tabela
                                    // %.2f mostra o valor de "combustivel" com 2 casas decimais
                                    
@@ -80,7 +80,7 @@ int main() {
             erro();
             continue;
         }       
-        for (i=0; i<6; i++){
+        for (i=0; i<NUM_NIVEIS; i++){
             if (potencias[i]==potencia){
                controle=1;
                break;
@@ -91,12 +91,12 @@ int main() {
          }
     }
     range = calcularAutonomia(liters, consumo[i]);
-    printf ("\nSera usado %d por cento de potencia", potencia);
+    printf ("\nSera usado %d porcento de potencia", potencia);
     printf ("\nVoce possui %.1fL", liters);
-    printf ("\nO seu consumo sera: %dKm/L\n", consumo[i]);
+    printf ("\nO seu consumo sera: %dKm/L", consumo[i]);
     printf ("\nA sua autonomia e de: %.2f Km", range);
     if (range < alerta)
-    printf("\nAlerta de autonomia baixa\n\n");
+    printf("\nAlerta de autonomia baixa");
     exibirTabelaSimulacao(liters);
                                    // Chama a funcao exibirTabelaSimulacao, passando o valor de combustivel
                                    // (e dentro dessa funcao que a tabela inteira e montada e impressa)
