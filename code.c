@@ -56,19 +56,29 @@ int main() {
     float liters, range;
     int potencia, i, controle=0;
     char a;
-    while(1){
-        printf("Digite o combustivel disponivel:");
-        a = '\0';
-        if ((scanf("%f%c", &liters, &a) != 2) || (a!='\n') || ((liters<=0) || (liters>tanque))){
-            if (a != '\n'){
-            int ch;
-            while ((ch = getchar()) != '\n' && ch != EOF);
-            }
-            erro();                        
-        }else{
+ while(1){
+    printf("Digite o combustivel disponivel:");
+    if (scanf("%f", &liters) != 1){
+        int ch;
+        while ((ch = getchar()) != '\n' && ch != EOF); // limpa o buffer
+        erro();
+        continue;
+    }
+    int ch;
+    while ((ch = getchar()) == ' ' || ch == '\t'); // pula espacos apos o numero
+    if (ch != '\n' || liters < 0 || liters > tanque){
+        if (ch != '\n'){
+            while (ch != '\n' && ch != EOF) ch = getchar(); // limpa o input
+        }
+        erro();
+    } else {
+        if (liters == 0){
+            printf("O tanque esta vazio, digite um valor maior que 0\n");
+        } else {
             break;
         }
     }
+}
     while (controle == 0){
         printf("\nDigite a potencia que sera utilizada:");
         a = '\0';
