@@ -3,114 +3,96 @@
 #include <string.h>
 #include <math.h>
 
-void erro(){
+void erro() {
     printf("\nEntrada invalida\n");
 }
+
 float calcularAutonomia(float liters, float consumo) {
-                                   // declara uma funcao chamada calcularAutonomia
-                                   // ela recebe dois parametros (combustivel e consumo, ambos float)
-                                   // e devolve (retorna) um valor do tipo float
     return liters * consumo;
-                                   // aplica a formula Autonomia = Combustivel x Consumo
-                                   // e devolve o resultado para quem chamou a funcao
 }
 
 #define NUM_NIVEIS 6
-const int consumo[NUM_NIVEIS]={22,18,15,13,10,8};
-const int potencias[NUM_NIVEIS]={20,40,50,60,80,100};
+const int consumo[NUM_NIVEIS] = {22, 18, 15, 13, 10, 8};
+const int potencias[NUM_NIVEIS] = {20, 40, 50, 60, 80, 100};
 
 void exibirTabelaSimulacao(float liters) {
-                                   // declara uma funcao chamada exibirTabelaSimulacao
-                                   // "void" significa que ela NAO devolve nenhum valor, so imprime na tela
-                                   // recebe um parametro: a quantidade de combustivel (float)
     int i;
-                                   
-                                   // as posicoes do vetor dentro do laco de repeticao (for)
     printf("\n\nTabela de Simulacao (combustivel = %.2f L)\n", liters);
-                                   // imprime o titulo da tabela
-                                   // %.2f mostra o valor de "combustivel" com 2 casas decimais
-                                   
     printf("%-14s %-16s %-15s\n", "Potencia (%)", "Consumo (km/L)", "Autonomia (km)");
-                                   // imprime o cabecalho da tabela (nomes das colunas)
-                                   // %-14s significa: texto alinhado a ESQUERDA, ocupando 14 caracteres
-                                   // (o "-" alinha a esquerda; sem o "-" alinharia a direita)
     for (i = 0; i < NUM_NIVEIS; i++) {
-                                   // inicia um laco de repeticao (for)
-                                   // i comeca em 0, repete enquanto i for menor que 6,
-                                   // e soma 1 a "i" (i++) a cada volta -> percorre todo o vetor
         float autonomia = calcularAutonomia(liters, consumo[i]);
-                                   // declara uma variavel local "autonomia"
-                                   // chama a funcao calcularAutonomia, passando o combustivel (fixo)
-                                   // e o consumo daquele nivel especifico (CONSUMOS[i])
-        printf("%-14.0d %-16.1d %-15.1f\n", potencias[i], consumo[i], autonomia);
-                                   // imprime uma linha da tabela com 3 valores:
-                                   // POTENCIAS[i]  -> %-14.0f: numero sem casas decimais, 14 espacos, alinhado a esquerda
-                                   // CONSUMOS[i]   -> %-16.1f: numero com 1 casa decimal, 16 espacos
-                                   // autonomia     -> %-15.1f: numero com 1 casa decimal, 15 espacos
+        printf("%-14d %-16d %-15.1f\n", potencias[i], consumo[i], autonomia);
     }
-    }                              
-
+}
 
 int main() {
-    const int tanque=50; int alerta=25;
+    const int tanque = 50;
+    int alerta = 25;
     float liters, range;
-    int potencia, i, controle=0;
-    char a;
- while(1){
-    printf("Digite o combustivel disponivel:");
-    if (scanf("%f", &liters) != 1){
-        int ch;
-        while ((ch = getchar()) != '\n' && ch != EOF); // limpa o buffer
-        erro();
-        continue;
-    }
-    int ch;
-    while ((ch = getchar()) == ' ' || ch == '\t'); // pula espacos apos o numero
-    if (ch != '\n' || liters < 0 || liters > tanque){
-        if (ch != '\n'){
-            while (ch != '\n' && ch != EOF) ch = getchar(); // limpa o input
-        }
-        erro();
-    } else {
-        if (liters == 0){
-            printf("O tanque esta vazio, digite um valor maior que 0\n");
-        } else {
-            break;
-        }
-    }
-}
-    while (controle == 0){
-        printf("\nDigite a potencia que sera utilizada:");
-        a = '\0';
-        if (((scanf("%d%c", &potencia, &a) != 2)) || (a!='\n')){
-            if (a != '\n'){
+    int potencia, i, controle = 0;
+
+    while (1) {
+        printf("Digite o combustivel disponivel:");
+        if (scanf("%f", &liters) != 1) {// o scanf retorna 1 (verdadeiro) quando ele le um float (por conta do %f), 
+                                        //assim se um float nao foi lido ele retornara um valor diferente de 1
             int ch;
-            while ((ch = getchar()) != '\n' && ch != EOF);
-            }
+            while ((ch = getchar()) != '\n' && ch != EOF);//limpa o input
             erro();
             continue;
-        }       
-        for (i=0; i<NUM_NIVEIS; i++){
-            if (potencias[i]==potencia){
-               controle=1;
-               break;
-            }               
         }
-         if (controle==0){
-              printf("\nValor invalido. Digite um valor entre estes: 20, 40, 50, 60, 80, 100\n");
-         }
+        int ch;
+        while ((ch = getchar()) == ' ' || ch == '\t'); //pula espacos
+        if (ch != '\n' || liters < 0 || liters > tanque) { //verifica se o valor esta no intervalo ou se apos pular os espacos ha alguma letra
+            if (ch != '\n') {
+                while (ch != '\n' && ch != EOF) ch = getchar();
+            }
+            erro();
+        } else {
+            if (liters == 0) {
+                printf("O tanque esta vazio, digite um valor maior que 0\n");
+            } else {
+                break;
+            }
+        }
     }
+
+    while (controle == 0) {
+        printf("\nDigite a potencia que sera utilizada:");
+        if (scanf("%d", &potencia) != 1) {
+            int ch;
+            while ((ch = getchar()) != '\n' && ch != EOF);
+            erro();
+            continue;
+        }
+        int ch;
+        while ((ch = getchar()) == ' ' || ch == '\t');
+        if (ch != '\n') {
+            while (ch != '\n' && ch != EOF) ch = getchar();
+            erro();
+            continue;
+        }
+        for (i = 0; i < NUM_NIVEIS; i++) {//passa pelo vetor potencias verificando se o input corresponde com algum valor da tabela
+            if (potencias[i] == potencia) {
+                controle = 1;
+                break;
+            }
+        }
+        if (controle == 0) {
+            printf("\nValor invalido. Digite um valor entre estes: 20, 40, 50, 60, 80, 100\n");
+        }
+    }
+
     range = calcularAutonomia(liters, consumo[i]);
-    printf ("\nSera usado %d porcento de potencia", potencia);
-    printf ("\nVoce possui %.1fL", liters);
-    printf ("\nO seu consumo sera: %dKm/L", consumo[i]);
-    printf ("\nA sua autonomia e de: %.2f Km", range);
+    printf("\nSera usado %d %% de potencia", potencia);
+    printf("\nVoce possui %.1fL", liters);
+    printf("\nO seu consumo sera: %dKm/L", consumo[i]);
+    printf("\nA sua autonomia e de: %.2f Km", range);
     if (range < alerta)
-    printf("\nAlerta de autonomia baixa");
+        printf("\nAlerta de autonomia baixa");
     exibirTabelaSimulacao(liters);
-                                   // Chama a funcao exibirTabelaSimulacao, passando o valor de combustivel
-                                   // (e dentro dessa funcao que a tabela inteira e montada e impressa)
+
     return 0;
 }
+
 
          
