@@ -19,7 +19,7 @@ void exibirTabelaSimulacao(float liters) {
     int i;
     printf("\n\nTabela de Simulacao (combustivel = %.2f L)\n", liters);
     printf("%-14s %-16s %-15s\n", "Potencia (%)", "Consumo (km/L)", "Autonomia (km)");
-    for (i = 0; i < NUM_NIVEIS; i++) {
+    for (i = 0; i < NUM_NIVEIS; i++) {//passa pelos valores do vetor para calcular a autonomia
         float autonomia = calcularAutonomia(liters, consumo[i]);
         printf("%-14d %-16d %-15.1f\n", potencias[i], consumo[i], autonomia);
     }
@@ -83,7 +83,7 @@ int main() {
     }
 
     range = calcularAutonomia(liters, consumo[i]);
-    printf("\nSera usado %d %% de potencia", potencia);
+    printf("\nSera usado %d%% de potencia", potencia);
     printf("\nVoce possui %.1fL", liters);
     printf("\nO seu consumo sera: %dKm/L", consumo[i]);
     printf("\nA sua autonomia e de: %.2f Km", range);
