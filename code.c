@@ -1,10 +1,11 @@
-Eduardo Solis Salge 
+/*Eduardo Solis Salge 
 Felipe Trindade Magalhães                
 Felipe Vivan de Oliveira
 Gustavo Vila Falchi
 Júlio Gomes Figueredo 
 Lucas Rodrigues Barbosa
-Pedro Lucas da Cruz Alves 
+Pedro Lucas da Cruz Alves
+*/
 
 #include <stdio.h>
 
