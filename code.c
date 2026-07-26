@@ -68,7 +68,7 @@ int main() {
         int ch;
         while ((ch = getchar()) == ' ' || ch == '\t');
         if (ch != '\n') {
-            while (ch != '\n' && ch != EOF) ch = getchar();
+            while ((ch = getchar()) != '\n' && ch != EOF);
             erro();
             continue;
         }
