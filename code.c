@@ -41,7 +41,8 @@ int main() {
             continue;
         }
         int ch;
-        while ((ch = getchar()) == ' ' || ch == '\t'); //pula espacos
+        while ((ch = getchar()) == ' ' || ch == '\t'); //pula espacos, para verificar se ha letras apos os numeros 
+                                                       //o scanf retorna 1 nesse caso (ex. 45a) o que falharia a verificacao
         if (ch != '\n' || liters < 0 || liters > tanque) { //verifica se o valor esta no intervalo ou se apos pular os espacos ha alguma letra
             if (ch != '\n') {
                 while (ch != '\n' && ch != EOF) ch = getchar();
