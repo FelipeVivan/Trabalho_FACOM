@@ -7,9 +7,6 @@ Lucas Rodrigues Barbosa
 Pedro Lucas da Cruz Alves 
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
 
 void erro() {
     printf("\nEntrada invalida\n");
